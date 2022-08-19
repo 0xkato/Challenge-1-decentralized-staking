@@ -34,15 +34,13 @@ function stake() public payable stakeNotCompleted {
 }
 
   // After some `deadline` allow anyone to call an `execute()` function
-  // If the deadline has passed and the threshold is met, it should call `exampleExternalContract.complete{value: address(this).balance}()`
+
 function execute() public stakeNotCompleted{
     require(deadline <= block.timestamp, "Deadline not reached");
     if (address(this).balance >= threshold) {
       exampleExternalContract.complete{value: address(this).balance}();
     }
 }
-
-  // If the `threshold` was not met, allow everyone to call a `withdraw()` function
 
 
   // Add a `withdraw()` function to let users withdraw their balance
